@@ -9,113 +9,19 @@
 
 package com.example.snacks.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "vue_produits") // ta vue MySQL existante
-public class Product {
-
-    @Id
-    private String codeArticle;
-
-    private String libelle;
-    private double prix;
-
-    public String getCodeArticle() {
-        return codeArticle;
-    }
-
-    public void setCodeArticle(String codeArticle) {
-        this.codeArticle = codeArticle;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
-}
+i
 
 
 package com.example.snacks.repository;
 
-import com.example.snacks.model.Product;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
 
-public interface ProductRepository extends PagingAndSortingRepository<Product, String> {
-
-    @Query("SELECT p FROM Product p WHERE LOWER(p.libelle) LIKE LOWER(CONCAT('%', :search, '%'))")
-    Page<Product> searchByLibelle(@Param("search") String search, Pageable pageable);
-}
 
 package com.example.snacks.service;
 
 import com.example.snacks.model.Product;
-import com.example.snacks.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-
-@Service
-public class ProductService {
-
-    @Autowired
-    private ProductRepository productRepository;
-
-    public Page<Product> getAllProducts(Pageable pageable) {
-        return productRepository.findAll(pageable);
-    }
-
-    public Page<Product> searchProducts(String search, Pageable pageable) {
-        return productRepository.searchByLibelle(search, pageable);
-    }
-}
 
 
 package com.example.snacks.controller;
 
 import com.example.snacks.model.Product;
-import com.example.snacks.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:3000") // autoriser React local
-@RestController
-@RequestMapping("/api/products")
-public class ProductController {
-
-    @Autowired
-    private ProductService productService;
-
-    @GetMapping
-    public Page<Product> getProducts(@RequestParam(defaultValue = "0") int page,
-                                     @RequestParam(defaultValue = "10") int size,
-                                     @RequestParam(required = false) String search) {
-
-        PageRequest pageable = PageRequest.of(page, size);
-        if (search != null && !search.isEmpty()) {
-            return productService.searchProducts(search, pageable);
-        } else {
-            return productService.getAllProducts(pageable);
-        }
-    }
-}

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, setPage, setSearch } from "./productsSlice";
+import { fetchProducts, setPage, setSearch } from "../slices/ProductsSlice";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";

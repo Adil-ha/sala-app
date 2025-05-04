@@ -1,14 +1,26 @@
 import React from "react";
-import { Provider } from "react-redux";
-import store from "./store";
-import ProductsTable from "./ProductsTable";
+import { Outlet } from 'react-router-dom';
+import NavBar  from "./layouts/NavBar";
+import Footer from "./layouts/Footer";
 
 
 function App() {
   return (
-    <Provider store={store}>
-      <ProductsTable />
-    </Provider>
+    <>
+        <header>
+          <NavBar/>
+        </header>
+        <main className="min-vh-100">
+          <Outlet/>
+        </main>
+        <footer>
+          <Footer/>
+        </footer>
+
+    </>
+
+      
+   
   );
 }
 

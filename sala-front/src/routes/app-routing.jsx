@@ -3,6 +3,7 @@ import App from "../App";
 import HomePage from "../pages/HomePage";
 import ErrorPage from "../pages/ErrorPage";
 import ProductsTable from "../components/ProductsTable";
+import Dashboard from "../pages/Dashbord";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +24,13 @@ const router = createBrowserRouter([
                 path: "/productsTable",
                 element:<ProductsTable />,
                
+            },
+                {
+                path: "/dashboard",
+                element:<Dashboard />,
+               
             }
+
 
             
         ]

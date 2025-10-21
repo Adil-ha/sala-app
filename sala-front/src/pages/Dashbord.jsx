@@ -13,7 +13,7 @@ const Dashboard = () => {
       <div className="card red-background">
         <p>STEAK HACHE 45G INICIA 6KG</p>
         <hr className="title-separator" />
-        <p><b>STOCK</b></p>
+        {/* <p><b>STOCK</b></p>
         <div className="stock-section">
           <div className="values">
             <div className="value">
@@ -29,7 +29,7 @@ const Dashboard = () => {
               <p>Prévisionnel</p>
             </div>
           </div>
-        </div>
+        </div> */}
         <p><b>VENTES</b></p>
         <div className="ventes-section">
           <div className="values">
@@ -54,7 +54,7 @@ const Dashboard = () => {
       <div className="card red-background">
         <p>SAUCE PILI PILI COLONA</p>
         <hr className="title-separator" />
-        <p><b>STOCK</b></p>
+        {/* <p><b>STOCK</b></p>
         <div className="stock-section">
           <div className="values">
             <div className="value">
@@ -70,7 +70,7 @@ const Dashboard = () => {
               <p>Prévisionnel</p>
             </div>
           </div>
-        </div>
+        </div> */}
         <p><b>VENTES</b></p>
         <div className="ventes-section">
           <div className="values">
